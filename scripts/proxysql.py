@@ -65,7 +65,7 @@ class proxysql:
         def get_proxysql_cluster(self, args):
                 server_checksum = self.__query("""SELECT checksum
                                                   FROM stats_proxysql_servers_checksums
-                                                  WHERE hostname in( "%s") and  name in ("%s");""" % (socket.getfqdn(),args.param))[0]['checksum']
+                                                  WHERE hostname in( "%s") and  name in ("%s");""" % (socket.gethostbyname(socket.getfqdn()),args.param))[0]['checksum']
                 total_servers  = self.__query("""SELECT CAST(COUNT(checksum) AS INT) as checksum
                                                  FROM stats_proxysql_servers_checksums
                                                  WHERE name in ("%s");""" % (args.param))[0]['checksum']
