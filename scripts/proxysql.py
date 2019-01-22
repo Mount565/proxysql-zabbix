@@ -112,9 +112,10 @@ ping = subparsers.add_parser("ping", help="check ProxySQL connectivity")
 ping.set_defaults(func=pcon.ping)
 
 get_variables = subparsers.add_parser("variable", help="get metrics from stats.stats_mysql_global")
-get_variables.add_argument("param", choices=["Client_Connections_aborted","Client_Connections_connected", "Client_Connections_created", "Server_Connections_aborted",
-"Server_Connections_connected", "Server_Connections_created", "Server_Connections_delayed","Client_Connections_non_idle", "Slow_queries",
-"ConnPool_get_conn_immediate","ConnPool_get_conn_success","ConnPool_get_conn_failure"])
+#get_variables.add_argument("param", choices=["Client_Connections_aborted","Client_Connections_connected", "Client_Connections_created", "Server_Connections_aborted",
+#"Server_Connections_connected", "Server_Connections_created", "Server_Connections_delayed","Client_Connections_non_idle", "Slow_queries",
+#"ConnPool_get_conn_immediate","ConnPool_get_conn_success","ConnPool_get_conn_failure"])
+get_variables.add_argument("param",type=str)
 get_variables.set_defaults(func=pcon.get_global_variables)
 
 get_users = subparsers.add_parser("user", help="get metrics from stats.stats_mysql_users")
